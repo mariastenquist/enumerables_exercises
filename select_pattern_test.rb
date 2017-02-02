@@ -17,58 +17,92 @@ class SelectPatternTest < Minitest::Test
     numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
     odds = []
     numbers.each do |number|
-      # Your code goes here
+      if number.odd?
+        odds << number
+      end
     end
     assert_equal [1, 3, 5, 7, 9], odds
   end
 
   def test_pick_words_with_three_letters
-    skip
     words = ["pill", "bad", "finger", "cat", "blue", "dog", "table", "red"]
     selected = []
-    # Your code goes here
+    words.each do |str|
+      if str.length == 3
+        selected << str
+      end
+    end
     assert_equal ["bad", "cat", "dog", "red"], selected
   end
 
   def test_pick_words_with_more_than_three_letters
-    skip
     words = ["pill", "bad", "finger", "cat", "blue", "dog", "table", "red"]
-    # Your code goes here
+    selected = []
+    words.each do |werd|
+      if werd.length > 3
+        selected << werd
+      end
+    end
     assert_equal ["pill", "finger", "blue", "table"], selected
   end
 
   def test_pick_words_ending_in_e
     skip
     words = ["are", "you", "strike", "thinking", "belt", "piece", "warble", "sing", "pipe"]
-    # Your code goes here
+    selected = []
+
+    words.select do |werd|
+      # alternate: if werd.last == 'e'
+      if werd[-1] == "e"
+        selected << werd
+      end
+    end
     assert_equal ["are", "strike", "piece", "warble", "pipe"], selected
   end
 
   def test_pick_words_ending_in_ing
-    skip
     words = ["bring", "finger", "drought", "singing", "bingo", "purposeful"]
-    # Your code goes here
+     selected = []
+    words.select do |werd|
+      if werd.end_with?("ing")
+        selected << werd
+      end
+    end
     assert_equal ["bring", "singing"], selected
   end
 
   def test_pick_words_containing_e
-    skip
     words = ["four", "red", "five", "blue", "pizza", "purple"]
-    # Your code goes here
+    selected = []
+    words.select do |werd|
+      if werd.include?("e")
+        selected << werd
+      end
+    end
     assert_equal ["red", "five", "blue", "purple"], selected
   end
 
   def test_pick_dinosaurs
-    skip
+
     animals = ["tyrannosaurus", "narwhal", "eel", "achillesaurus", "qingxiusaurus"]
-    # Your code goes here
+    dinosaurs = []
+    animals.select do |critter|
+      if critter.include?("saurus")
+        dinosaurs << critter
+      end
+    end
     assert_equal ["tyrannosaurus", "achillesaurus", "qingxiusaurus"], dinosaurs
   end
 
   def test_pick_floats
     skip
     numbers = [3, 1.4, 3.5, 2, 4.9, 9.1, 8.0]
-    # Your code goes here
+    floats = []
+    numbers.select do |int|
+      if int.include?(Float)
+        floats << int
+      end
+    end
     assert_equal [1.4, 3.5, 4.9, 9.1, 8.0], floats
   end
 
